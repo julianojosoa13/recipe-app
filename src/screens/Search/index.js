@@ -5,7 +5,7 @@ import Card from "../../components/Card";
 import Input from "../../components/Input";
 import styles from "./styles";
 
-const Search = () => {
+const Search = ({navigation}) => {
     const { recipes } = useContext(RecipesContext)
     const [filteredRecipes, setFilteredRecipes] = useState([])
     const [keyword, setKeyword] = useState('')
@@ -34,6 +34,7 @@ const Search = () => {
                         servings={item?.num_servings}
                         image={item?.thumbnail_url}
                         rating={item?.user_ratings?.score}
+                        onPress={() => navigation.navigate("RecipeDetails", { item })}
                         author={item?.credits?.length
                             ? { name: item?.credits[0]?.name, image: item?.credits[0]?.image_url }
                             : null}

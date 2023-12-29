@@ -59,7 +59,7 @@ export default function App() {
             <Stack.Screen name="Splash" component={Splash} options={{ headerShown: false }} />
             <Stack.Screen name="Home" component={Home} options={{ headerLeft: null, gestureEnabled: false }} />
             <Stack.Screen name="Search" component={Search} options={{ headerLeft: (props) => <BackButton {...props} /> }} />
-            <Stack.Screen name='RecipeDetails' component={RecipeDetails} options={{ headerLeft: (props) => <BackButton {...props} /> }} />
+            <Stack.Screen name='RecipeDetails' component={RecipeDetails} options={{ headerLeft: (props) => <BackButton {...props} />, title: '' }} />
           </Stack.Navigator>
         </NavigationContainer>
       </RecipesContext.Provider>
