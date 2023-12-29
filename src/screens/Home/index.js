@@ -47,6 +47,7 @@ const Home = ({ navigation }) => {
                         time={item?.cook_time_minutes}
                         image={item?.thumbnail_url}
                         rating={item?.user_ratings?.score}
+                        onPress={() => navigation.navigate('RecipeDetails', { item })}
                         author={item?.credits?.length 
                             ? { name: item?.credits[0]?.name, image: item?.credits[0]?.image_url } 
                             : null}
