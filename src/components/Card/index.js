@@ -8,10 +8,10 @@ const Card = ({ title, style, image, servings }) => {
             <Image style={styles.image} source={{ uri: image }} />
             <Text numberOfLines={3} style={styles.title}>{title}</Text>
             {servings ? (
-                <>
+                <View style={styles.row}>
                     <Text style={styles.label}>Servings</Text>
                     <Text style={styles.value}>{servings}</Text>
-                </>
+                </View>
             ) : null}
         </View>
     );

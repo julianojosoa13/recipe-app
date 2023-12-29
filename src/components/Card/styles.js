@@ -13,6 +13,11 @@ const styles = StyleSheet.create({
         marginTop: 60,
         marginRight: 16,
     },
+    row: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-around'
+    },
     title: {
         fontSize: 14,
         color: colors.grey,
