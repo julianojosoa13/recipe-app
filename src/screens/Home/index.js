@@ -11,6 +11,7 @@ import styles from "./styles";
 const Home = ({ navigation }) => {
     const [tags, setTags] = useState([])
     const [selectedTag, setSelectedTag] = useState()
+    const [filteredRecipes, setFilteredRecipes] = useState(recipes)
     const { healthyRecipes } = useContext(HealthyRecipesContext);
     const { recipes } = useContext(RecipesContext);
 
@@ -25,8 +26,21 @@ const Home = ({ navigation }) => {
             })
         })
 
-        setTags(tagsList)
+        setTags(['all', ...tagsList])
     }, [recipes])
+
+    useEffect(() => {
+        if(selectedTag && selectedTag !== 'all' ) {
+            const filteredItems = recipes?.filter( recipe => {
+                const tag = recipe?.tags.find(t => t?.name === selectedTag)
+                return !!tag
+            })
+            setFilteredRecipes(filteredItems)
+        } else {
+            setFilteredRecipes(recipes)
+        }
+    }, [selectedTag, recipes])
+
 
     return (
         <SafeAreaView style={styles.container}>
@@ -61,7 +75,7 @@ const Home = ({ navigation }) => {
 
             <FlatList
                 horizontal
-                data={recipes}
+                data={filteredRecipes}
                 style={{ marginHorizontal: -24 }}
                 keyExtractor={item => String(item?.id)}
                 showsHorizontalScrollIndicator={false}
